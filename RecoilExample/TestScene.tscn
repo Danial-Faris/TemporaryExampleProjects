@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.152941, 0.556863, 0.0235294, 1 )
+position = Vector2( -3200, -3200 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 6400, 6400 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 2 )]
+linear_damp = 2.0
+recoilMagnitude = 200.0
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+current = true
