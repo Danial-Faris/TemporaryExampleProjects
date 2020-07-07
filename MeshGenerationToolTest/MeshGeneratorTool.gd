@@ -3,8 +3,8 @@ extends MeshInstance
 
 export(float) var radius = 50.0 setget setRadius
 export(int) var trianglesCount = 5 setget setTrianglesCount
-export(Color) var innerColor = 5 setget setInnerColor
-export(Color) var outerColor = 5 setget setOuterColor
+export(Color) var innerColor = Color.blue setget setInnerColor
+export(Color) var outerColor = Color.red setget setOuterColor
 
 
 func regenerateMesh():
@@ -24,15 +24,17 @@ func regenerateMesh():
 
 
 func setRadius(value):
+	value = max(value, 0.0)
 	if radius == value:
 		return
 	radius = value
 	regenerateMesh()
 
 func setTrianglesCount(value):
+	value = max(value, 3)
 	if trianglesCount == value:
 		return
-	trianglesCount = max(value, 3)
+	trianglesCount = value
 	regenerateMesh()
 
 func setInnerColor(value):
