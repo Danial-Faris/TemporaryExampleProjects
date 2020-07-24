@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 pixelSize = vec2(4.0, 4.0);
+
+void fragment()
+{
+	vec2 uv = UV - mod(UV, pixelSize * TEXTURE_PIXEL_SIZE);
+	COLOR = texture(TEXTURE, uv);
+}"
+custom_defines = ""
+
+[resource]
+shader = SubResource( 1 )
+shader_param/pixelSize = Vector2( 4, 4 )
